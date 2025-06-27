@@ -8,6 +8,7 @@ using OpenAPI;
 
 @service(#{ title: "Energy Calculation as a Service" })
 @info(#{ version: "0.1.0", license: #{ name: "MIT", url: "https://opensource.org/licenses/MIT" } })
+@server("https://api.building-energy-calculator-integration.communities.gov.uk", "Integration environment API instance")
 namespace EnergyCalculationAsAService;
 
 @useRef("./schemas/fhs_input.schema.json")
@@ -25,29 +26,11 @@ op ApiMetadata(): OkResponse;
 @post
 @summary("Check Future Homes Standard (FHS) compliance")
 op FHSCompliance(
-  @header contentType: "application/vnd.api+json",
   @body
   body: FhsComplianceInput,
 ):
-  FhsOkResponse<FhsComplianceResponse>
-  | {
-      @statusCode statusCode: 422;
-      @body body: {
-        errors: JsonApiOnePointOneErrors;
-        meta: FhsMeta;
-      };
-    }
-  | {
-      @statusCode statusCode: 500;
-      @body body: {
-        errors: JsonApiOnePointOneErrors;
-        meta: FhsMeta;
-      };
-    }
-  | {
-      @statusCode statusCode: 501;
-      @body body: {
-        errors: JsonApiOnePointOneErrors;
-        meta: FhsMeta;
-      };
-    };
+  /** A summary of a successful HEM calculation to determine compliance with the Future Homes Standard (FHS). */
+  | FhsOkResponse<FhsComplianceResponse>
+  | FhsUnprocessableError
+  | FhsCalculationFailedError
+  | FhsUnimplementedError;

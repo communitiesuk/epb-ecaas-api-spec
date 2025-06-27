@@ -125,13 +125,39 @@ model FhsDataResponse<T> {
     meta: FhsMeta
 }
 
-model FhsErrorResponse {
+model FhsErrorResponseBody {
     errors: JsonApiOnePointOneErrors;
     meta: FhsMeta;
 }
 
-@mediaTypeHint("application/vnd.api+json")
+model JsonTypeResponse {
+  @header contentType: "application/vnd.api+json"
+}
+
+model FhsErrorResponse<Status> {
+  ...Response<Status>,
+  ...JsonTypeResponse,
+  @body body: FhsErrorResponseBody;
+}
+
+@doc("A summary of a successful HEM calculation to determine compliance with the Future Homes Standard (FHS).")
 model FhsOkResponse<T> {
     ...OkResponse,
-    ...Body<FhsDataResponse<T>>,
+    ...JsonTypeResponse,
+    ...Body<FhsDataResponse<T>>
+}
+
+@doc("An error denoting that the request could not be processed by the calculator.")
+model FhsUnprocessableError {
+  ...FhsErrorResponse<422>
+}
+
+@doc("An error denoting that an error happened at some stage in the ECaaS engine when processing the request.")
+model FhsCalculationFailedError {
+  ...FhsErrorResponse<500>
+}
+
+@doc("An error denoting that the request has exercised an area of the HEM engine that has not yet been implemented in the MHCLG project.")
+model FhsUnimplementedError {
+  ...FhsErrorResponse<501>
 }

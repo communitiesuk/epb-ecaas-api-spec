@@ -7,6 +7,7 @@ model JsonApiOnePointOneErrors is JsonApiOnePointOneError[];
 
 // ideally definition here of JsonApiOnePointOneError would enforce presence of at least field in an error object
 // but perhaps an empty one is unlikely to happen in practice
+@doc("A JSON API error object. At least of the properties must be set.")
 model JsonApiOnePointOneError {
   /**
    * A unique identifier for this particular occurrence of the problem.
@@ -42,8 +43,9 @@ model JsonApiOnePointOneError {
 /**
  * The error links object **MAY** contain the following members: about.
  */
-union JsonApiOnePointOneErrorLinks {
-  JsonApiOnePointOneAtMemberName,
+model JsonApiOnePointOneErrorLinks {
+  about?: JsonApiOnePointOneLink,
+  type?: JsonApiOnePointOneLink,
 }
 
 model JsonApiOnePointOneErrorSource {
