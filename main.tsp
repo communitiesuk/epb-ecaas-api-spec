@@ -1,15 +1,22 @@
 import "@typespec/http";
 import "@typespec/openapi";
 import "@typespec/openapi3";
+import "@typespec/versioning";
 import "./responses/models.tsp";
 
 using Http;
 using OpenAPI;
+using Versioning;
 
 @service(#{ title: "Energy Calculation as a Service" })
-@info(#{ version: "0.1.0", license: #{ name: "MIT", url: "https://opensource.org/licenses/MIT" } })
+@info(#{ license: #{ name: "MIT", url: "https://opensource.org/licenses/MIT" } })
 @server("https://api.building-energy-calculator-integration.communities.gov.uk", "Integration environment API instance")
+@versioned(Versions)
 namespace EnergyCalculationAsAService;
+
+enum Versions {
+  "0.1.0": "0.1.0"
+}
 
 @useRef("./schemas/fhs_input.schema.json")
 model FhsComplianceInput {}
