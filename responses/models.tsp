@@ -13,73 +13,73 @@ model FhsComplianceResponse {
   /**
    * The calculated DER (Dwelling Emission Rate) of the building. Unit: kgCO₂e/m².yr.
    */
-  dwelling_emission_rate?: numeric;
+  dwelling_emission_rate: numeric;
 
   /**
    * The determined TER (Target Emission Rate) used for the calculation for this building. Unit: kgCO₂e/m².yr.
    */
-  target_emission_rate?: numeric;
+  target_emission_rate: numeric;
 
   /**
    * Whether this calculation determines that the building with the provided properties complies with the Future Homes Standard for emission rate.
    */
-  emission_rate_compliant?: boolean;
+  emission_rate_compliant: boolean;
 
   /**
    * The calculated DPER (Dwelling Primary Energy Rate) of the building. Unit: kWh/m².yr.
    */
-  dwelling_primary_energy_rate?: numeric;
+  dwelling_primary_energy_rate: numeric;
 
   /**
    * The determined TPER (Target Primary Energy Rate) used for the calculation for this building. Unit: kWh/m².yr.
    */
-  target_primary_energy_rate?: numeric;
+  target_primary_energy_rate: numeric;
 
   /**
    * Whether the calculated Dwelling Primary Energy Rate is compliant with FHS.
    */
-  primary_energy_rate_compliant?: boolean;
+  primary_energy_rate_compliant: boolean;
 
   /**
    * The calculated DFEE (Dwelling Fabric Energy Efficiency) of the building. Unit: kWh/m².yr.
    */
-  dwelling_fabric_energy_efficiency?: numeric;
+  dwelling_fabric_energy_efficiency: numeric;
 
   /**
    * The determined TPEE (Target Fabric Energy Efficiency) of the building. Unit: kWh/m².yr.
    */
-  target_fabric_energy_efficiency?: numeric;
+  target_fabric_energy_efficiency: numeric;
 
   /**
    * Whether the calculated Dwelling Fabric Energy Efficiency is compliant with FHS.
    */
-  fabric_energy_efficiency_compliant?: boolean;
+  fabric_energy_efficiency_compliant: boolean;
 
-  energy_demand?: FhsEnergyDemand;
-  delivered_energy_use?: FhsDeliveredEnergyUse;
-  energy_use_by_fuel?: Record<FhsEnergyPerformanceValue>;
+  energy_demand: FhsEnergyDemand;
+  delivered_energy_use: FhsDeliveredEnergyUse;
+  energy_use_by_fuel: Record<FhsEnergyPerformanceValue>;
 }
 
 model FhsEnergyDemand {
-  space_heating?: FhsEnergyPerformanceValue;
-  space_cooling?: FhsEnergyPerformanceValue;
+  space_heating: FhsEnergyPerformanceValue;
+  space_cooling: FhsEnergyPerformanceValue;
 }
 
 model FhsDeliveredEnergyUse {
-  total?: FhsEnergyPerformanceValue;
-  by_system?: Record<FhsEnergyPerformanceValue>;
+  total: FhsEnergyPerformanceValue;
+  by_system: Record<FhsEnergyPerformanceValue>;
 }
 
 model FhsEnergyPerformanceValue {
   /**
    * The actual measured energy performance for a particular metric. Unit: kWh/m².yr.
    */
-  actual?: numeric;
+  actual: numeric;
 
   /**
    * The notional energy performance for a particular metric. Unit: kWh/m².yr.
    */
-  notional?: numeric;
+  notional: numeric;
 }
 
 model FhsMeta {
