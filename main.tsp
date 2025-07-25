@@ -40,4 +40,5 @@ op FHSCompliance(
   | FhsOkResponse<FhsComplianceResponse>
   | FhsUnprocessableError
   | FhsCalculationFailedError
-  | FhsUnimplementedError;
+  | FhsUnimplementedError
+  | FhsCalculationTimedOutError;

@@ -125,8 +125,12 @@ model FhsDataResponse<T> {
     meta: FhsMeta
 }
 
-model FhsErrorResponseBody {
+model FhsErrorResponseBodyNoMeta {
     errors: JsonApiOnePointOneErrors;
+}
+
+model FhsErrorResponseBody {
+    ...FhsErrorResponseBodyNoMeta,
     meta: FhsMeta;
 }
 
@@ -160,4 +164,11 @@ model FhsCalculationFailedError {
 @doc("An error denoting that the request has exercised an area of the HEM engine that has not yet been implemented in the MHCLG project.")
 model FhsUnimplementedError {
   ...FhsErrorResponse<501>
+}
+
+@doc("An error denoting that a calculation in the ECaaS engine took too long, and the API timed out awaiting a response.")
+model FhsCalculationTimedOutError {
+  ...Response<504>,
+  ...JsonTypeResponse,
+  @body body: FhsErrorResponseBodyNoMeta;
 }
