@@ -968,6 +968,39 @@
       "title": "BuildingElementAdjacentUnconditionedSpace_Simple",
       "type": "object"
     },
+    "BuildingElementGround": {
+      "additionalProperties": {
+        "discriminator": {
+          "mapping": {
+            "Heated_basement": "#/$defs/BuildingElementGroundHeatedBasement",
+            "Slab_edge_insulation": "#/$defs/BuildingElementGroundSlabEdgeInsulation",
+            "Slab_no_edge_insulation": "#/$defs/BuildingElementGroundSlabNoEdgeInsulation",
+            "Suspended_floor": "#/$defs/BuildingElementGroundSuspendedFloor",
+            "Unheated_basement": "#/$defs/BuildingElementGroundUnheatedBasement"
+          },
+          "propertyName": "floor_type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/BuildingElementGroundSlabNoEdgeInsulation"
+          },
+          {
+            "$ref": "#/$defs/BuildingElementGroundSlabEdgeInsulation"
+          },
+          {
+            "$ref": "#/$defs/BuildingElementGroundSuspendedFloor"
+          },
+          {
+            "$ref": "#/$defs/BuildingElementGroundHeatedBasement"
+          },
+          {
+            "$ref": "#/$defs/BuildingElementGroundUnheatedBasement"
+          }
+        ]
+      },
+      "title": "BuildingElementGround",
+      "type": "object"
+    },
     "BuildingElementGroundHeatedBasement": {
       "additionalProperties": false,
       "description": "Heated basement - uses init_heated_basement()",
@@ -7472,35 +7505,7 @@
               "mapping": {
                 "BuildingElementAdjacentConditionedSpace": "#/$defs/BuildingElementAdjacentConditionedSpace",
                 "BuildingElementAdjacentUnconditionedSpace_Simple": "#/$defs/BuildingElementAdjacentUnconditionedSpace_Simple",
-                "BuildingElementGround": {
-                  "discriminator": {
-                    "mapping": {
-                      "Heated_basement": "#/$defs/BuildingElementGroundHeatedBasement",
-                      "Slab_edge_insulation": "#/$defs/BuildingElementGroundSlabEdgeInsulation",
-                      "Slab_no_edge_insulation": "#/$defs/BuildingElementGroundSlabNoEdgeInsulation",
-                      "Suspended_floor": "#/$defs/BuildingElementGroundSuspendedFloor",
-                      "Unheated_basement": "#/$defs/BuildingElementGroundUnheatedBasement"
-                    },
-                    "propertyName": "floor_type"
-                  },
-                  "oneOf": [
-                    {
-                      "$ref": "#/$defs/BuildingElementGroundSlabNoEdgeInsulation"
-                    },
-                    {
-                      "$ref": "#/$defs/BuildingElementGroundSlabEdgeInsulation"
-                    },
-                    {
-                      "$ref": "#/$defs/BuildingElementGroundSuspendedFloor"
-                    },
-                    {
-                      "$ref": "#/$defs/BuildingElementGroundHeatedBasement"
-                    },
-                    {
-                      "$ref": "#/$defs/BuildingElementGroundUnheatedBasement"
-                    }
-                  ]
-                },
+                "BuildingElementGround": "#/$defs/BuildingElementGround",
                 "BuildingElementOpaque": "#/$defs/BuildingElementOpaqueFHS",
                 "BuildingElementTransparent": "#/$defs/BuildingElementTransparentFHS"
               },
