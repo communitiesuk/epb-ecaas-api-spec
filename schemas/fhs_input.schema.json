@@ -839,6 +839,13 @@
       "title": "BoilerHotWaterTest",
       "type": "string"
     },
+    "BuildType": {
+      "enum": [
+        "house",
+        "flat"
+      ],
+      "type": "string"
+    },
     "BuildingElementAdjacentConditionedSpace": {
       "additionalProperties": false,
       "properties": {
@@ -3302,8 +3309,29 @@
       "type": "string"
     },
     "General": {
-      "properties": {},
-      "title": "General",
+      "additionalProperties": false,
+      "properties": {
+        "build_type": {
+          "$ref": "#/$defs/BuildType"
+        },
+        "storey_of_dwelling": {
+          "format": "int32",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "storeys_in_building": {
+          "format": "int32",
+          "minimum": 0.0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "build_type",
+        "storeys_in_building"
+      ],
       "type": "object"
     },
     "HeatPumpBackupControlType": {
