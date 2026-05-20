@@ -166,6 +166,11 @@ model FhsUnimplementedError {
   ...FhsErrorResponse<501>
 }
 
+@doc("An error denoting a possibly temporary outage of an internal service used for processing requests")
+model ServiceUnavailableError {
+  ...FhsErrorResponse<503>
+}
+
 @doc("An error denoting that a calculation in the ECaaS engine took too long, and the API timed out awaiting a response.")
 model FhsCalculationTimedOutError {
   ...Response<504>,

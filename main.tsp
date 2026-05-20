@@ -41,4 +41,5 @@ op FHSCompliance(
   | FhsUnprocessableError
   | FhsCalculationFailedError
   | FhsUnimplementedError
+  | ServiceUnavailableError
   | FhsCalculationTimedOutError;
