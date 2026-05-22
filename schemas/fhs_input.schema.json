@@ -846,9 +846,6 @@
 							}
 						},
 						"then": {
-							"required": [
-								"EnergySupply"
-							],
 							"anyOf": [
 								{
 									"properties": {
@@ -1463,9 +1460,6 @@
 							}
 						},
 						"then": {
-							"required": [
-								"EnergySupply"
-							],
 							"oneOf": [
 								{
 									"required": [
@@ -1576,7 +1570,6 @@
 						},
 						"then": {
 							"required": [
-								"EnergySupply",
 								"battery_type"
 							],
 							"properties": {
@@ -1846,9 +1839,6 @@
 							}
 						},
 						"then": {
-							"required": [
-								"EnergySupply"
-							],
 							"oneOf": [
 								{
 									"required": [
