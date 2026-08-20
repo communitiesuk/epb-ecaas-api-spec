@@ -5194,12 +5194,6 @@
 												"maximum": 1,
 												"description": "Total solar energy transmittance of the transparent part of the window"
 											},
-											"max_window_open_area": {
-												"type": "number",
-												"minimum": 0,
-												"maximum": 100,
-												"description": "Openable area of the window ignoring the obstructing effect of the frame of the openable part"
-											},
 											"security_risk": {
 												"type": "boolean"
 											},
