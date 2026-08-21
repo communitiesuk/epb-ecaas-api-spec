@@ -2751,41 +2751,19 @@
 																	"description": "A unique reference to a product held within the HEM database (PCDB)",
 																	"title": "Reference to the product in the HEM database",
 																	"type": "string"
+																},
+																"length": {
+																	"type": "number",
+																	"exclusiveMinimum": 0,
+																	"description": "The length of the emitter (unit: m)"
 																}
 															},
 															"required": [
-																"product_reference"
+																"product_reference",
+																"length"
 															],
 															"title": "RadiatorWithProductReference",
-															"type": "object",
-															"oneOf": [
-																{
-																	"required": [
-																		"radiator_type",
-																		"length"
-																	],
-																	"properties": {
-																		"radiator_type": {
-																			"const": "standard"
-																		},
-																		"length": {
-																			"type": "number",
-																			"exclusiveMinimum": 0,
-																			"description": "The length of the emitter (unit: m)"
-																		}
-																	}
-																},
-																{
-																	"required": [
-																		"radiator_type"
-																	],
-																	"properties": {
-																		"radiator_type": {
-																			"const": "towel"
-																		}
-																	}
-																}
-															]
+															"type": "object"
 														},
 														{
 															"required": [
