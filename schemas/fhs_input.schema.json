@@ -5331,6 +5331,7 @@
 										}
 									},
 									"then": {
+										"title": "Linear thermal bridge",
 										"required": [
 											"linear_thermal_transmittance",
 											"length",
@@ -5407,6 +5408,7 @@
 										}
 									},
 									"then": {
+										"title": "Point thermal bridge",
 										"required": [
 											"heat_transfer_coeff"
 										],
