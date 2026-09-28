@@ -3163,30 +3163,41 @@
 													"required": [
 														"wet_emitter_type"
 													],
-													"anyOf": [
+													"allOf": [
 														{
-															"required": [
-																"length"
-															],
-															"not": {
-																"required": [
-																	"thermal_mass_per_m"
-																]
-															}
+															"anyOf": [
+																{
+																	"required": [
+																		"length"
+																	],
+																	"not": {
+																		"required": [
+																			"thermal_mass_per_m"
+																		]
+																	}
+																},
+																{
+																	"not": {
+																		"anyOf": [
+																			{
+																				"required": [
+																					"length"
+																				]
+																			},
+																			{
+																				"required": [
+																					"thermal_mass"
+																				]
+																			}
+																		]
+																	}
+																}
+															]
 														},
 														{
 															"not": {
-																"anyOf": [
-																	{
-																		"required": [
-																			"length"
-																		]
-																	},
-																	{
-																		"required": [
-																			"thermal_mass"
-																		]
-																	}
+																"required": [
+																	"product_reference"
 																]
 															}
 														}
